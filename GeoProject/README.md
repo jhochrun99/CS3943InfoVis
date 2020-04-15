@@ -1,12 +1,17 @@
-# Info Vis Project Template
-
 ## Intro
 
-This is a simple template to use for class projects. You can change this template however you want and you do not have to use it. This is just one possible way to structure your code that works for making static visualizations, but there are many others. For example, there's the [reusable charts pattern](https://bost.ocks.org/mike/chart/).
+This assignment was to design visualization solutions for 3 questions related to the AidData dataset. This dataset contains information about financial transactions for aid purposes between two countries. Given the data structure and analytical questions, the goal is to create views that would help an analyst to obtain the answer for those questions.
+
+## Questions
+
+1: How do the countries compare in terms of how much they receive and donate from other countries? Are there countries that donate much more than they receive or receive much more than they donate?
+2: Do the countries that mostly receive or mostly donate tend to cluster around specific geographical areas of the world? Are there neighboring countries that have radically different patterns in terms of how much they receive vs. how much they donate?
+3: (OPTIONAL) Are there any major differences in how the top 5 most frequent purposes of disbursements distribute geographically in terms of  countries that receive donations? Are there countries that tend to receive more of certain types of donations than others?
 
 ## Running the code
 
 To run the website, execute the command `python3 -m http.server` in this directory and then go to http://0.0.0.0:8000/ in your browser.
+If running from windows command prompt, use the command `python -m http.server` for python3, or `python -m SimpleHTTPServer` for python2. 
 
 ## Contents
 
@@ -21,9 +26,3 @@ To run the website, execute the command `python3 -m http.server` in this directo
 * `main.js` loads the datasets and then calls the visualization functions.
 
 * `visualizations` contains the code to make the visualizations. As an example, right now there is a bar chart and an empty world map.
-
-## Transitioning from Observable
-
-So far in this course, we have used [Observable](https://observablehq.com) to build our visualizations. Observable is an awesome tool, but we want to make sure that you also know how to make visualizations outside of it. We want you to become comfortable building visualizations in normal websites, using HTML, CSS, and D3 + JavaScript. The good news is that what you've learned so far is easy to transfer from Observable to your own websites.
-
-For example, the bar chart in `vis1.js` is mostly the same as the one in the [Fundamental Graphs](https://observablehq.com/@nyuvis/fundamental-graphs) notebook. The main difference is how we create the SVG element. First, I added a `<div id="vis1">` in `index.html` for where I want the visualization to go on the page. In `main.js`, I select the div and pass it to the `vis1` function. In that function, we add an SVG element to the div and select it with `const svg = div.append('svg')`. Now that we've selected and added the SVG element to the page, the rest of the code is the same as on Observable, except that we no longer have `return svg.node();` at the end.
