@@ -11,7 +11,8 @@ This assignment was to design visualization solutions for 3 questions related to
 ## Running the code
 
 To run the website, execute the command `python3 -m http.server` in this directory and then go to http://0.0.0.0:8000/ in your browser.
-\nIf running from windows command prompt, use the command `python -m http.server` for python3, or `python -m SimpleHTTPServer` for python2. 
+
+If running from windows command prompt, use the command `python -m http.server` for python3, or `python -m SimpleHTTPServer` for python2. 
 
 ## Contents
 
