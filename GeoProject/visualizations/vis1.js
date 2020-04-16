@@ -62,7 +62,7 @@ function vis1(data, div) {
   g.selectAll("rect")
     .data(data)
     .join("rect")
-    .attr("x", d => x(Math.min(0, d.net))
+    .attr("x", d => x(Math.min(0, d.net)))
     .attr("y", d => y(d.country))
     .attr("width", d => x(d.net))
     .attr("height", d => y.bandwidth())
