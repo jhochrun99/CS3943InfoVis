@@ -20,16 +20,16 @@ function vis1(data, div) {
     .attr("dominant-baseline", "hanging")
     .attr("font-family", "sans-serif")
     .attr("font-size", "16px")
-    .text("Game Scores");
+    .text("Country Net Donation Values");
 
   // create scales
 
   const x = d3.scaleLinear()
-    .domain([0, d3.max(data, d => d.score)]).nice()
+    .domain([d3.min(data, d => d.net), d3.max(data, d => d.net)]).nice()
     .range([0, visWidth]);
 
-  const sortedNames = data.sort((a, b) => d3.descending(a.score, b.score))
-      .map(d => d.name);
+  const sortedNames = data.sort((a, b) => d3.descending(a.net, b.net))
+      .map(d => d.country);
 
   const y = d3.scaleBand()
     .domain(sortedNames)
@@ -49,7 +49,7 @@ function vis1(data, div) {
     .attr("y", 40)
     .attr("fill", "black")
     .attr("text-anchor", "middle")
-    .text("Score");
+    .text("Net Donation ($, Amount Donated - Received)");
 
   const yAxis = d3.axisLeft(y);
 
@@ -62,9 +62,24 @@ function vis1(data, div) {
   g.selectAll("rect")
     .data(data)
     .join("rect")
-    .attr("x", d => 0)
-    .attr("y", d => y(d.name))
-    .attr("width", d => x(d.score))
+    .attr("x", d => x(Math.min(0, d.net))
+    .attr("y", d => y(d.country))
+    .attr("width", d => x(d.net))
     .attr("height", d => y.bandwidth())
     .attr("fill", "steelblue");
+  
+    //.attr("width", d => x(Math.abs(d.rate - 3.5)+2))
+          
+  // draw line
+  
+  const line = d3.line()
+    .x(x(0))
+    .y(d => y(d.country)+5);
+  
+  g.append("path")
+    .datum(data)
+    .attr("d", line)
+    .attr("fill", "none")
+    .attr("stroke", "black")
+    .attr("stroke-width", 1);
 }
