@@ -23,8 +23,8 @@ function vis1(data, div) {
     .text("Net Donation Values by Country");
 
   // create scales
-
-  const scaleDown = 1000;
+  
+  const scaleDown = 1000000;
   const x = d3.scaleLinear()
     .domain([d3.min(data, d => d.net)/scaleDown, d3.max(data, d => d.net)/scaleDown]).nice()
     .range([0, visWidth]);
@@ -63,7 +63,7 @@ function vis1(data, div) {
   g.selectAll("rect")
     .data(data)
     .join("rect")
-    .attr("x", d => x(Math.min(0, d.net)))
+    .attr("x", d => x(Math.min(0, d.net / scaleDown)))
     .attr("y", d => y(d.country))
     .attr("width", d => x(d.net / scaleDown))
     .attr("height", d => y.bandwidth())
