@@ -20,12 +20,13 @@ function vis1(data, div) {
     .attr("dominant-baseline", "hanging")
     .attr("font-family", "sans-serif")
     .attr("font-size", "16px")
-    .text("Country Net Donation Values");
+    .text("Net Donation Values by Country");
 
   // create scales
 
+  const scaleDown = 1000;
   const x = d3.scaleLinear()
-    .domain([d3.min(data, d => d.net), d3.max(data, d => d.net)]).nice()
+    .domain([d3.min(data, d => d.net)/scaleDown, d3.max(data, d => d.net)/scaleDown]).nice()
     .range([0, visWidth]);
 
   const sortedNames = data.sort((a, b) => d3.descending(a.net, b.net))
@@ -34,7 +35,7 @@ function vis1(data, div) {
   const y = d3.scaleBand()
     .domain(sortedNames)
     .range([0, visHeight])
-    .padding(0.2);
+    .padding(0.5); //changed from 0.2
 
   // create and add axes
 
@@ -49,7 +50,7 @@ function vis1(data, div) {
     .attr("y", 40)
     .attr("fill", "black")
     .attr("text-anchor", "middle")
-    .text("Net Donation ($, Amount Donated - Received)");
+    .text("Net Donation (k$, Amount Donated - Received)");
 
   const yAxis = d3.axisLeft(y);
 
@@ -64,7 +65,7 @@ function vis1(data, div) {
     .join("rect")
     .attr("x", d => x(Math.min(0, d.net)))
     .attr("y", d => y(d.country))
-    .attr("width", d => x(d.net))
+    .attr("width", d => x(d.net / scaleDown))
     .attr("height", d => y.bandwidth())
     .attr("fill", "steelblue");
   
