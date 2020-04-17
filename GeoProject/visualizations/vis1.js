@@ -1,5 +1,5 @@
 function vis1(data, div) {
-  const margin = {top: 40, right: 20, bottom: 40, left: 100};
+  const margin = {top: 40, right: 20, bottom: 40, left: 110};
 
   const visWidth = 700 - margin.left - margin.right;
   const visHeight = 500 - margin.top - margin.bottom;
@@ -15,7 +15,7 @@ function vis1(data, div) {
 
   g.append("text")
     .attr("x", visWidth / 2)
-    .attr("y", -margin.top + 5)
+    .attr("y", -margin.top + 20)
     .attr("text-anchor", "middle")
     .attr("dominant-baseline", "hanging")
     .attr("font-family", "sans-serif")
@@ -35,7 +35,7 @@ function vis1(data, div) {
   const y = d3.scaleBand()
     .domain(sortedNames)
     .range([0, visHeight])
-    .padding(0.3); //changed from 0.2
+    .padding(0.3);
 
   // create and add axes
 
@@ -65,7 +65,7 @@ function vis1(data, div) {
     .join("rect")
     .attr("x", d => x(Math.min(0, d.net / scaleDown)))
     .attr("y", d => y(d.country))
-    .attr("width", d => x(Math.abs(d.net / scaleDown)))
+    .attr("width", d => x(Math.abs(d.net / scaleDown)-140000))
     .attr("height", d => y.bandwidth())
     .attr("fill", "steelblue");
             
