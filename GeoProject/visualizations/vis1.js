@@ -2,7 +2,7 @@ function vis1(data, div) {
   const margin = {top: 40, right: 20, bottom: 40, left: 100};
 
   const visWidth = 700 - margin.left - margin.right;
-  const visHeight = 400 - margin.top - margin.bottom;
+  const visHeight = 500 - margin.top - margin.bottom;
 
   const svg = div.append('svg')
       .attr('width', visWidth + margin.left + margin.right)
@@ -29,13 +29,13 @@ function vis1(data, div) {
     .domain([d3.min(data, d => d.net)/scaleDown, d3.max(data, d => d.net)/scaleDown]).nice()
     .range([0, visWidth]);
 
-  const sortedNames = data.sort((a, b) => d3.descending(a.net, b.net))
+  const sortedNames = data.sort((a, b) => d3.ascending(a.net, b.net))
       .map(d => d.country);
 
   const y = d3.scaleBand()
     .domain(sortedNames)
     .range([0, visHeight])
-    .padding(0.5); //changed from 0.2
+    .padding(0.3); //changed from 0.2
 
   // create and add axes
 
@@ -50,7 +50,7 @@ function vis1(data, div) {
     .attr("y", 40)
     .attr("fill", "black")
     .attr("text-anchor", "middle")
-    .text("Net Donation (k$, Amount Donated - Received)");
+    .text("Net Donation (M$, Amount Donated - Received)");
 
   const yAxis = d3.axisLeft(y);
 
@@ -65,17 +65,15 @@ function vis1(data, div) {
     .join("rect")
     .attr("x", d => x(Math.min(0, d.net / scaleDown)))
     .attr("y", d => y(d.country))
-    .attr("width", d => x(d.net / scaleDown))
+    .attr("width", d => x(Math.abs(d.net / scaleDown)))
     .attr("height", d => y.bandwidth())
     .attr("fill", "steelblue");
-  
-    //.attr("width", d => x(Math.abs(d.rate - 3.5)+2))
-          
+            
   // draw line
   
   const line = d3.line()
     .x(x(0))
-    .y(d => y(d.country)+5);
+    .y(d => y(d.country)+3);
   
   g.append("path")
     .datum(data)
