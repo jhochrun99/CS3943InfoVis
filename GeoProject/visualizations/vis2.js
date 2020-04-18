@@ -16,15 +16,14 @@ function vis2(geoJSON, data, div) {
 
   const path = d3.geoPath().projection(projection);
 
-  //const allCountries = Object.keys(geoJSON).map(function(key) { return [key, geoJSON[key]]; });
-  //const allCountriesNET = Object.fromEntries(new Map(turnArray[2][1].map(d => [d.properties.SOVEREIGNT, 0])));
-  //const countryDonations = d3.csvParse(await FileAttachment('DonationsByCountry.csv').text(), d3.autoType);
-
   const countriesOnly = data.map(d => d.country);
-  //const CountryToNet = Object.fromEntries(new Map(countryDonations.map(d => [d.country, d.net])));
-  
-  const color = d3.scaleDiverging(d => d3.interpolateRdBu(d))
-      .domain(d3.extent(data, d => d.net));
+  const countryN = data.map(d => ({country: d.country, net: d.net}));
+  const countryToNet = new Map(countryN.map(d => [ d.country, d.net ]));
+
+  const maxVal = d3.max(d3.extent(data, d => d.net), d => Math.abs(d));
+
+  const color = d3.scaleDiverging(t => d3.interpolateRdBu(1 - t))
+      .domain([-maxVal, 0, maxVal]);
 
   g.selectAll('.border')
     .data(geoJSON.features)
@@ -32,9 +31,12 @@ function vis2(geoJSON, data, div) {
       .attr('class', 'border')
       .attr('d', path)
       .attr('fill', function (d) {
-          if(countriesOnly.includes(d.properties.NAME) || countriesOnly.includes(d.properties.NAME_LONG)) {
-            return 'black';
-          } //needed NAME_LONG for Czech Republic
+          if(countriesOnly.includes(d.properties.NAME)) {
+            return color(countryToNet[d.properties.NAME]);
+          } 
+          else if (countriesOnly.includes(d.properties.NAME_LONG)) { //needed NAME_LONG for Czech Republic
+            return color(countryToNet[d.properties.NAME_LONG]);
+          }
           //Changed Slovak Republic to Slovakia, Korea to Republic of Korea
           //Monaco, Luxembourg, Liechtenstein are very hard to see, but are there
           else {
@@ -42,8 +44,6 @@ function vis2(geoJSON, data, div) {
           }
         })
       .attr('stroke', 'white');
-
-//check names: Slovak Republic
 
   const mapOutline = d3.geoGraticule().outline();
   
