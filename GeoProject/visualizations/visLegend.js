@@ -1,5 +1,3 @@
-//import {legend} from "d3/d3-color-legend.js";
-
 function visLegend(data, div) {
     const svg = div.append('svg');
     const maxVal = d3.max(d3.extent(data, d => d.net), d => Math.abs(d));;
@@ -10,5 +8,5 @@ function visLegend(data, div) {
         title: 'Net Donation $'
     });
 
-    svg.append(legend);
+    //svg.append(legend);
 }
