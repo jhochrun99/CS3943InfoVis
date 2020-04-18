@@ -18,7 +18,7 @@ function vis2(geoJSON, data, div) {
 
   const countriesOnly = data.map(d => d.country);
   const countryN = data.map(d => ({country: d.country, net: d.net}));
-  const countryToNet = new Map(countryN.map(d => [ d.country, d.net ]));
+  const countryToNet = Object.fromEntries(new Map(countryN.map(d => [ d.country, d.net ])));
 
   const maxVal = d3.max(d3.extent(data, d => d.net), d => Math.abs(d));
 
@@ -40,7 +40,7 @@ function vis2(geoJSON, data, div) {
           //Changed Slovak Republic to Slovakia, Korea to Republic of Korea
           //Monaco, Luxembourg, Liechtenstein are very hard to see, but are there
           else {
-            return '#dcdcdc';
+            return '#7a7a7a';
           }
         })
       .attr('stroke', 'white');
