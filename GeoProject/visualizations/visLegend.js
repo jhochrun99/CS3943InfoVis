@@ -1,4 +1,4 @@
-import legend from "d3-color-legend.js"
+//import {legend} from "d3/d3-color-legend.js";
 
 function visLegend(data, div) {
     const svg = div.append('svg');
