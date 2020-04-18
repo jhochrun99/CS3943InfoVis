@@ -134,7 +134,10 @@ function legend({
   }
 
 function ramp(color, n = 256) {
-  const canvas = DOM.canvas(n, 1);
+  const canvas = document.createElement('canvas');
+  canvas.width = n;
+  canvas.height = 1;
+  
   const context = canvas.getContext("2d");
   for (let i = 0; i < n; ++i) {
     context.fillStyle = color(i / (n - 1));

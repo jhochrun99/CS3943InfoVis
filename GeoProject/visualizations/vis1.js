@@ -1,5 +1,5 @@
 function vis1(data, div) {
-  const margin = {top: 40, right: 20, bottom: 40, left: 110};
+  const margin = {top: 40, right: 20, bottom: 40, left: 130};
 
   const visWidth = 700 - margin.left - margin.right;
   const visHeight = 500 - margin.top - margin.bottom;
@@ -26,7 +26,6 @@ function vis1(data, div) {
   
   const x = d3.scaleLinear()
     .domain(d3.extent(data, d => d.net)).nice()
-    //.domain([d3.min(data, d => d.net), d3.max(data, d => d.net)]).nice()
     .range([0, visWidth]);
 
   const sortedNames = data.sort((a, b) => d3.ascending(a.net, b.net))
@@ -67,7 +66,7 @@ function vis1(data, div) {
     .attr("y", d => y(d.country))
     .attr("width", d => x(Math.abs(d.net)) - x(0))
     .attr("height", d => y.bandwidth())
-    .attr("fill", "steelblue");
+    .attr("fill", "indigo");
             
   // draw line
   
@@ -79,6 +78,6 @@ function vis1(data, div) {
     .datum(data)
     .attr("d", line)
     .attr("fill", "none")
-    .attr("stroke", "black")
-    .attr("stroke-width", 1);
+    .attr("stroke", "#525252")
+    .attr("stroke-width", 0.5);
 }

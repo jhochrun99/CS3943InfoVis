@@ -43,7 +43,7 @@ function vis2(geoJSON, data, div) {
             return '#7a7a7a';
           }
         })
-      .attr('stroke', 'white');
+      .attr('stroke', '#c2c2c2');
 
   const mapOutline = d3.geoGraticule().outline();
   
