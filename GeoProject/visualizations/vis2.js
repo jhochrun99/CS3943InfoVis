@@ -32,14 +32,18 @@ function vis2(geoJSON, data, div) {
       .attr('class', 'border')
       .attr('d', path)
       .attr('fill', function (d) {
-          if(countriesOnly.includes(d.properties.NAME)) {
-            return 'red';
-          }
+          if(countriesOnly.includes(d.properties.NAME) || countriesOnly.includes(d.properties.NAME_LONG)) {
+            return 'black';
+          } //needed NAME_LONG for Czech Republic
+          //Changed Slovak Republic to Slovakia, Korea to Republic of Korea
+          //Monaco, Luxembourg, Liechtenstein are very hard to see, but are there
           else {
             return '#dcdcdc';
           }
         })
       .attr('stroke', 'white');
+
+//check names: Slovak Republic
 
   const mapOutline = d3.geoGraticule().outline();
   
