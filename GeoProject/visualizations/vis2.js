@@ -31,13 +31,16 @@ function vis2(geoJSON, data, div) {
     .join('path')
       .attr('class', 'border')
       .attr('d', path)
-      .attr('fill', '#dcdcdc')
+      .attr('fill', function (d) {
+          if(countriesOnly.includes(d.properties.NAME)) {
+            return 'red';
+          }
+          else {
+            return '#dcdcdc';
+          }
+        })
       .attr('stroke', 'white');
 
-  g.selectAll('.border')
-    .data(geoJSON.features.filter(d => countriesOnly.includes(d.properties.NAME) || countriesOnly.includes(d.properties.NAME_LONG)))
-      .attr('fill', d => color());
-  
   const mapOutline = d3.geoGraticule().outline();
   
   g.append('path')
