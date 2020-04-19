@@ -2,14 +2,10 @@
     <head>
         <meta charset="utf-8">
 
-        <title>Project #</title>
+        <title>Project 1: Geo</title>
         
         <!-- link our CSS file -->
         <link rel="stylesheet" href="style.css">
-
-        <!-- defer makes it so that these scripts load
-            in the background and then execute in order
-            after the DOM is ready -->
 
         <!-- D3 library goes first --> 
         <script src="d3/d3.js" defer></script>
@@ -35,14 +31,35 @@
             <p>How do the countries compare in terms of how much they receive and donate from other countries? 
                <br>Are there countries that donate much more than they receive or receive much more than they donate?</p>
             <div id="vis1"></div>
-            
+            <br><p>The countries that receive significantly more aid than they give are India,
+                Thailand, and Brazil. The countries that give significantly more aid than they 
+                receive are the United States of America, Japan, and Germany. 
+                <br><br>There are a few countries in the center as well, that give and receive 
+                roughly the same amount, causing them to have either no visible bar or a very small 
+                bar. A few of these are Portugal, Iceland, Liechtenstein, and Monaco. 
+            </p>
+
             <h1>Visualization 2</h1>
             <p>Do the countries that mostly receive or mostly donate tend to cluster around specific geographical areas of the world? 
                 <br>Are there neighboring countries that have radically different patterns in terms of how much they receive 
                 vs. how much they donate?</p>
             <div id="visLegend"></div>
             <div id="vis2"></div>
-            
+            <p>As can be seen on the map, the majority of countries that are near each other
+                fall into similar donation habits. The largest differences would be between 
+                the United States and Canada, and Korea and Japan. The US and Canada are both
+                red, meaning they donate more than they receive, but Canada is a much lighter
+                red. For Korea and Japan, Korea is a light blue and Japan is a dark red, so 
+                Korea receives slightly more aid, and Japan gives significantly more donations. 
+                <br><br> A small difference can be seen in Europe as well. Poland is blue, it
+                receives more aid than it gives, and Germany is red. Both are light compared
+                to countries like the US and India, but they're darker than the surrounding
+                European countries. 
+                <br><br>Looking at South America, the countries there are mostly blue. The only 
+                exception is French Guiana, which is being considered as part of France anyway,
+                and it's a very light red. 
+            </p>
+
             <h1>(Optional) Visualization 3</h1>
             
         </div>
