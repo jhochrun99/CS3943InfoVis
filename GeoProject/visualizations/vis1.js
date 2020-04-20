@@ -49,7 +49,7 @@ function vis1(data, div) {
     .attr("y", 40)
     .attr("fill", "black")
     .attr("text-anchor", "middle")
-    .text("Net Donation $ (Amount Donated - Received)");
+    .text("Net Donation $");
 
   const yAxis = d3.axisLeft(y);
 
