@@ -1,7 +1,8 @@
 function vis2(purposeNet, div) {
-  const margin = {top: 10, right: 30, bottom: 20, left: 40};
+  const width = 850;
+  const margin = {top: 30, right: 30, bottom: 30, left: 40};
   const visWidth = width - margin.left - margin.right;
-  const visHeight = 500 - margin.top - margin.bottom;
+  const visHeight = 550 - margin.top - margin.bottom;
 
   const svg = div.append('svg')
       .attr('width', visWidth + margin.left + margin.right)
@@ -9,6 +10,17 @@ function vis2(purposeNet, div) {
 
   const g = svg.append('g')
     .attr('transform', `translate(${margin.left}, ${margin.top})`);
+
+    // add title
+
+  g.append("text")
+    .attr("x", visWidth / 2)
+    .attr("y", -margin.top + 10)
+    .attr("text-anchor", "middle")
+    .attr("dominant-baseline", "hanging")
+    .attr("font-family", "sans-serif")
+    .attr("font-size", "16px")
+    .text("Yearly Net Donations by Purpose");
 
   // values needed later
 
@@ -93,15 +105,4 @@ g.selectAll('.series')
       .attr("font-family", "sans-serif")
       .style("alignment-baseline", "middle")
       .style("fill", "black");
-
-  // title
-
-  g.append("text")
-    .attr("x", visWidth / 2)
-    .attr("y", -margin.top + 5)
-    .attr("text-anchor", "middle")
-    .attr("dominant-baseline", "hanging")
-    .attr("font-family", "sans-serif")
-    .attr("font-size", "16px")
-    .text("Top 10 Donation Purposes");
 }

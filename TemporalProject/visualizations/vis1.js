@@ -27,7 +27,7 @@ function vis1(countryNet, div) {
     .attr("dominant-baseline", "hanging")
     .attr("font-family", "sans-serif")
     .attr("font-size", "16px")
-    .text("Yearly Net Donation Values");
+    .text("Yearly Net Donations by Country");
 
   // create scales
   
