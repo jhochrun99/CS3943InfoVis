@@ -1,6 +1,6 @@
 function vis1(countryNet, div) {
-  const margin = {top: 20, right: 10, bottom: 20, left: 105};
-  const visWidth = width - margin.left - margin.right;
+  const margin = {top: 50, right: 10, bottom: 20, left: 105};
+  const visWidth = 800 - margin.left - margin.right;
   const visHeight = 600 - margin.top - margin.bottom;
 
   const svg = div.append('svg')
@@ -12,20 +12,22 @@ function vis1(countryNet, div) {
 
   // values needed later
 
+  const sortedByNet = countryNet.sort((a,b) => (a.net > b.net) ? 1 : -1);
+
   const yearList = (Array.from(new Set(countryNet.map(d => d.year)))).sort();
   const countryList = Array.from(new Set(countryNet.map(d => d.country)));
-  const netCountryMax = d3.max(countryNet, d => d.net)
+  const netCountryMax = d3.max(d3.extent(countryNet, d => d.net), d => Math.abs(d));
 
   // add title
 
   g.append("text")
     .attr("x", visWidth / 2)
-    .attr("y", -margin.top + 20)
+    .attr("y", -margin.top + 10)
     .attr("text-anchor", "middle")
     .attr("dominant-baseline", "hanging")
     .attr("font-family", "sans-serif")
     .attr("font-size", "16px")
-    .text("Net Donation Values by Country");
+    .text("Yearly Net Donation Values");
 
   // create scales
   
@@ -64,7 +66,7 @@ function vis1(countryNet, div) {
       .interpolator(d3.interpolateRdYlBu);
 
   g.selectAll('rect')
-    .data(countryNet)
+    .data(sortedByNet)
     .join('rect')
       .attr('x', d => x(d.year))
       .attr('y', d => y(d.country))
