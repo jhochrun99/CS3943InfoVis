@@ -29,14 +29,6 @@ function vis2(purposeNet, div) {
   const yearSpan = d3.extent(purposeNet, d => d.year);
   const purposeCompact = Array.from(d3.group(purposeNet, d => d.purpose), 
         ([purpose, values]) => ({ purpose: purpose, values }));
-  // {
-  //   const purp = d3.group(purposeNet, d => d.purpose),
-    
-  //   return Array.from(purp, ([purpose, values]) => ({
-  //     purpose: purpose,
-  //     values
-  //   }));
-  // }
 
   // create scales
 
@@ -90,31 +82,4 @@ g.selectAll('.series')
       .attr('fill', 'none')
       .attr('stroke-width', 2)
       .attr('d', line);
-
-  // legend
-
-  const size = 10;
-  const xLoc = width - margin.left - 275;
-  g.selectAll("squares")
-    .data(top10)
-    .enter()
-    .append("rect")
-      .attr("x", xLoc)
-      .attr("y", function(d,i){ return i*(size+6) })
-      .attr("width", size)
-      .attr("height", size)
-      .style("fill", function(d){ return color(d) });
-
-  g.selectAll("labels")
-    .data(top10)
-    .enter()
-    .append("text")
-      .attr("x", xLoc + size*1.2)
-      .attr("y", function(d,i){ return i*(size+6) + (size/2) })
-      .text(function(d){ return d })
-      .attr("text-anchor", "left")
-      .attr("font-size", "14px")
-      .attr("font-family", "sans-serif")
-      .style("alignment-baseline", "middle")
-      .style("fill", "black");
 }

@@ -1,4 +1,4 @@
-function visLegend(countryNet, div) {
+function visLegend1(countryNet, div) {
     const maxVal = d3.max(d3.extent(countryNet, d => d.net), d => Math.abs(d));
 
     const colorLegend = legend({

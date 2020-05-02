@@ -4,7 +4,11 @@ Promise.all([
   d3.csv('data/CountryNetByYear.csv', d3.autoType),
   d3.csv('data/PurposeNetByYear.csv', d3.autoType),
 ]).then(([countryNet, purposeNet]) => {
-  visLegend(countryNet, d3.select('#visLegend'));
+  visLegend1(countryNet, d3.select('#visLegend1'));
   vis1(countryNet, d3.select('#vis1'));
+  
+  visLegend2(purposeNet, d3.select('#visLegend2'));
   vis2(purposeNet, d3.select('#vis2'));
+  vis3(purposeNet, d3.select('#vis3'));
+  vis4(purposeNet, d3.select('#vis4'));
 });
