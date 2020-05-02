@@ -27,6 +27,16 @@ function vis2(purposeNet, div) {
   const top10 = Array.from(new Set(purposeNet.map(d => d.purpose)));
   const netPurposeExtent = d3.extent(purposeNet, d => d.net);
   const yearSpan = d3.extent(purposeNet, d => d.year);
+  const purposeCompact = Array.from(d3.group(purposeNet, d => d.purpose), 
+        ([purpose, values]) => ({ purpose: purpose, values }));
+  // {
+  //   const purp = d3.group(purposeNet, d => d.purpose),
+    
+  //   return Array.from(purp, ([purpose, values]) => ({
+  //     purpose: purpose,
+  //     values
+  //   }));
+  // }
 
   // create scales
 
@@ -68,13 +78,15 @@ function vis2(purposeNet, div) {
     .x(d => x(d.year))
     .y(d => y(d.net));
 
+//each year, key of purpose -> net
+
 g.selectAll('.series')
-    .data(top10)
+    .data(purposeCompact)
     .join('g')
-      .attr('stroke', d => color(d))
+      .attr('stroke', d => color(d.purpose))
       .attr('class', 'series')
     .append('path')
-      .datum(purposeNet)
+      .datum(d => d.values)
       .attr('fill', 'none')
       .attr('stroke-width', 2)
       .attr('d', line);

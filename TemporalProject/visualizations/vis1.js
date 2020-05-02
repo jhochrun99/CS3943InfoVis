@@ -12,6 +12,7 @@ function vis1(countryNet, div) {
 
   // values needed later
 
+  //sort by total net amount
   const sortedByNet = countryNet.sort((a,b) => (a.net > b.net) ? 1 : -1);
 
   const yearList = (Array.from(new Set(countryNet.map(d => d.year)))).sort();
@@ -65,6 +66,7 @@ function vis1(countryNet, div) {
       .domain([-netCountryMax, 0, netCountryMax])
       .interpolator(d3.interpolateRdYlBu);
 
+  //figure out how to add a grid = scatterplot example
   g.selectAll('rect')
     .data(sortedByNet)
     .join('rect')
