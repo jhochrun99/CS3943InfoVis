@@ -32,8 +32,8 @@ If running from windows command prompt, use the command `python -m http.server` 
 
 * `d3` contains the D3 library.
 
-* `data` contains datasets used by the visualizations. For now there is a toy dataset that contains the scores for a game and `countries.json`, which is a GeoJSON file for world countries. This file is derived from data from [Natural Earth](https://www.naturalearthdata.com).
+* `data` contains datasets used by the visualizations.
 
 * `main.js` loads the datasets and then calls the visualization functions.
 
-* `visualizations` contains the code to make the visualizations. As an example, right now there is a bar chart and an empty world map.
+* `visualizations` contains the code to make the visualizations.
