@@ -1,6 +1,6 @@
 function vis3(purposeNet, div) {
     const width = 850;
-    const margin = { top: 20, right: 30, bottom: 70, left: 70 };
+    const margin = { top: 30, right: 30, bottom: 30, left: 70 };
     const visWidth = width - margin.left - margin.right;
     const visHeight = 600 - margin.top - margin.bottom;
 
@@ -20,7 +20,7 @@ function vis3(purposeNet, div) {
         .attr("dominant-baseline", "hanging")
         .attr("font-family", "sans-serif")
         .attr("font-size", "16px")
-        .text("Top 10 Donation Purposes");
+        .text("Yearly % Donations by Purpose");
 
     // values needed later
 

@@ -1,6 +1,6 @@
 function vis4(purposeNet, div) {
     const width = 850;
-    const margin = { top: 20, right: 5, bottom: 20, left: 40 };
+    const margin = { top: 40, right: 5, bottom: 20, left: 40 };
     const visWidth = width - margin.left - margin.right;
     const visHeight = 550 - margin.top - margin.bottom;
 
@@ -15,7 +15,7 @@ function vis4(purposeNet, div) {
 
     g.append("text")
         .attr("x", visWidth / 2)
-        .attr("y", -margin.top + 2)
+        .attr("y", -margin.top + 10)
         .attr("text-anchor", "middle")
         .attr("dominant-baseline", "hanging")
         .attr("font-family", "sans-serif")
