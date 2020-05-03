@@ -4,9 +4,9 @@ This assignment was to design visualization solutions for 3 questions related to
 
 ## Questions
 
-1. How do the countries compare in terms of how much they receive and donate from other countries? Are there countries that donate much more than they receive or receive much more than they donate?
-2. Do the countries that mostly receive or mostly donate tend to cluster around specific geographical areas of the world? Are there neighboring countries that have radically different patterns in terms of how much they receive vs. how much they donate?
-3. (OPTIONAL) Are there any major differences in how the top 5 most frequent purposes of disbursements distribute geographically in terms of  countries that receive donations? Are there countries that tend to receive more of certain types of donations than others?
+1. How does the amount donated vs. amount received change over time across all countries? Are there countries that mostly send or mostly receive and countries that have a similar amount of donations they receive and send? Are there countries that change their role over time? Are there countries in which you can find a sudden increase ("peak") or a sudden decrease ("valley")?
+2. Focus on the top 10 “Coalesced Purposes” of donations. What are the top 10 purposes of disbursements (in terms of total amount of disbursement) and how does their relative amount compare over time? Are there purposes that tend to be prominent for a period of time and others that become more prominent during other periods? Hint: looking at the graph one should be able to observe: “Ah! During these years donations were mostly about X but then there were way more donations about Y”.
+3. (OPTIONAL) Focusing exclusively on countries that receive donations, how do donations shift geographically over time? Do donations tend to be always in the same regions of the world over the years or they have been shifting over time? Can you build a visualization that shows the “history of donations” so that one can get a sense of which regions of the world have had more need for donations over the years? 
 
 ## Data
 
@@ -32,8 +32,8 @@ If running from windows command prompt, use the command `python -m http.server` 
 
 * `d3` contains the D3 library.
 
-* `data` contains datasets used by the visualizations. For now there is a toy dataset that contains the scores for a game and `countries.json`, which is a GeoJSON file for world countries. This file is derived from data from [Natural Earth](https://www.naturalearthdata.com).
+* `data` contains datasets used by the visualizations.
 
 * `main.js` loads the datasets and then calls the visualization functions.
 
-* `visualizations` contains the code to make the visualizations. As an example, right now there is a bar chart and an empty world map.
+* `visualizations` contains the code to make the visualizations.
