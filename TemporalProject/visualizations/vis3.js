@@ -44,7 +44,6 @@ function vis3(purposeNet, div) {
             }
         })
         .offset(d3.stackOffsetExpand)(dataByYear)
-    const showTicks = [1973, 1977, 1981, 1985, 1989, 1993, 1997, 2001, 2005, 2009, 2013];
 
     const yMax = 1;
     const yFormat = '.0%';
