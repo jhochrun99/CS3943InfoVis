@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+
+        <title>Project 3: Networks</title>
+        
+        <!-- link our CSS file -->
+        <link rel="stylesheet" href="style.css">
+
+        <!-- D3 library goes first --> 
+        <script src="d3/d3.js" defer></script>
+        <script src="d3/d3-array.js" defer></script>
+        <script src="d3/d3-color-legend.js" defer></script>
+        
+        <!-- Then our visualization code --> 
+        <script src="visualizations/vis1.js" defer></script>
+        <script src="visualizations/visLegend2.js" defer></script>
+        <script src="visualizations/vis2.js" defer></script>
+        
+        <!-- Then our code that calls the visualizations --> 
+        <script src="main.js" defer></script>
+
+    </head>
+
+    <body>
+        <div id="container">
+            <p>Jessica Hochrun, jh5367</p>
+            <p>Mini-project #3: Networks</p>
+
+            <h1>Visualization 1</h1>
+            <p>
+                Create an overview of the relationships between countries so that it is possible to see who donates to whom and how much.
+            </p>
+            <ul><li>Who are the major donors and to which countries do they donate the most and how much?</li>
+                <li>Who are the major receivers and which countries do they receive from the most and how much?</li>
+                <li>We only care about the top 10 recipients and the top 20 donors over time for this question.</li>
+            </ul>
+            <div id="vis1"></div>
+            <p>
+                Explanation
+            </p>
+            <br>
+
+            <h1>Visualization 2</h1>
+            <p>
+                Consider only the top 5 purposes of donation, and the top 10 recipients and top 20 donors.
+            </p>
+            <ul><li>How does the relationship between countries look like in terms of purposes?</li>
+                <li>What composition of purposes do the donations between each pair of countries have?</li>
+                <li>Are there countries that donate to a given country using multiple purposes? Or do counties always donate using one single purpose when donating to another country?</li>
+            </ul>
+            <div id="visLegend2"></div>
+            <div id="vis2"></div>   
+            <br>
+            <p>
+                Explanation
+            </p>
+            
+            <br><br><br>       
+        </div>
+    </body>
+</html>
